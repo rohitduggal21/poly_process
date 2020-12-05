@@ -5,7 +5,7 @@
     (4) Valid inputs: "(x-3)*(x-4)/(x^12-7xy-6x-10)" "x^76-100xy+10x^y-89xy^3" "(x+1)*(x-1)*(4x-1)/(x^3+1)"
 
 ## Included files
-    (1) tl_update.cpp (main code)
+    (1) tl_updated.cpp (main code)
     (2) gcc_version.png (compiler configuration)
 
 ## Instructions to run the program
