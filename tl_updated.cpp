@@ -5,6 +5,7 @@
 
 using namespace std;
 
+// Generate polynomial basis representation
 string getChar(string which, int p, char mode='r')
 {
 	if (p == 0) return "";
@@ -16,6 +17,7 @@ string getChar(string which, int p, char mode='r')
 	}
 }
 
+// Generate polynomial basis
 vector<string> generate(int n_x, int n_y, char mode='r')
 {
 	vector<vector<int>> cross;
@@ -39,6 +41,7 @@ vector<string> generate(int n_x, int n_y, char mode='r')
 	return res;
 }
 
+// Get highest degree of the polynomial
 int getDegree(string poly, string which)
 {
 	int deg = 0;
@@ -60,6 +63,7 @@ int getDegree(string poly, string which)
 	return deg;
 }
 
+// Get sum of a list
 int sum(vector<int> arr)
 {
 	int sum = 0;
@@ -67,6 +71,7 @@ int sum(vector<int> arr)
 	return sum;
 }
 
+// Processing polynomials with regex
 vector<int> getMatches(string poly, string regx)
 {
 	vector<int> res;
@@ -85,6 +90,7 @@ vector<int> getMatches(string poly, string regx)
 	return res;
 }
 
+// Used for polynomial multiplication
 vector<int> shift(vector<int> arr, int by)
 {
 	int index;
@@ -98,6 +104,7 @@ vector<int> shift(vector<int> arr, int by)
 	return res;
 }
 
+// Give a structure to input string polynomial
 class polynomial
 {
 	public:	
@@ -121,14 +128,6 @@ class polynomial
 		{
 			coeff.push_back(sum(getMatches(poly,regx)));
 		}
-	}
-
-	void show()
-	{
-		for(string x: coeff_list) cout<<x<<" ";
-		cout<<"\n";
-		for(float x: coeff) cout<<x<<" ";
-		cout<<"\n";
 	}
 
 	polynomial product(polynomial other)
@@ -175,35 +174,7 @@ class polynomial
 		result_poly.deg_y = de_y;
 		return result_poly;
 	}
-	polynomial add(polynomial other)
-	{
-		int de_x = deg_x + other.deg_x;
-		int de_y = deg_y + other.deg_y;
-		coeff_list = generate(de_x,de_y,'w');
-		coeff_regex = generate(de_x,de_y);
-		other.coeff_list = coeff_list;
-		other.coeff_regex = coeff_regex;
-		vector<int> temp1;
-		vector<int> temp2;
-		for(string regx: coeff_regex)
-		{
-			temp1.push_back(sum(getMatches(poly,regx)));
-			temp2.push_back(sum(getMatches(other.poly,regx)));
-		}
-		coeff = temp1;
-		other.coeff = temp2;
-		vector<int> new_coeff;
-		for(int i=0;i<coeff.size();i++)
-		{
-			new_coeff.push_back(coeff[i]+other.coeff[i]);
-		}
-		polynomial result_poly = polynomial("");
-		result_poly.coeff = new_coeff;
-		result_poly.coeff_list = coeff_list;
-		result_poly.coeff_regex = coeff_regex;
-		result_poly.poly = result_poly.repr();
-		return result_poly;
-	}
+
 	string repr()
 	{
 		string result = "";
@@ -225,6 +196,7 @@ class polynomial
 
 };
 
+//Processing polynomials
 vector<polynomial> process(string arg)
 {
 	vector<polynomial> result;
@@ -253,6 +225,7 @@ vector<polynomial> process(string arg)
 	return result;
 }
 
+// Compare two polynomials
 string comparePolynomial(vector<polynomial> one, vector<polynomial> two)
 {
 	int ctr = 0;
@@ -276,6 +249,7 @@ int main(int argc, char** argv)
 	}
 	else
 	{
+		// Getting the polynomials
 		string poly1 = argv[1];
 		string poly2 = argv[2];
 		cout<<comparePolynomial(process(poly1),process(poly2))<<"\n";
