@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string.h>
 #include <regex>
- #include <vector>
+#include <vector>
 
 using namespace std;
 
@@ -253,18 +253,18 @@ vector<polynomial> process(string arg)
 	return result;
 }
 
-int comparePolynomial(vector<polynomial> one, vector<polynomial> two)
+string comparePolynomial(vector<polynomial> one, vector<polynomial> two)
 {
 	int ctr = 0;
-	if(one.size() != two.size()) return -1;
+	if(one.size() != two.size()) return "False";
 	else
 	{
 		for(int i=0;i<one.size();i++)
 		{
 			if (one[i].repr().compare(two[i].repr()) == 0) ctr++;
 		}
-		if (ctr == one.size()) return 1;
-		else return -1;
+		if (ctr == one.size()) return "True";
+		else return "False";
 	}
 }
 
