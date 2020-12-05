@@ -6,10 +6,11 @@
 
 ## Included files
     (1) tl_updated.cpp (main code)
-    (2) gcc_version.png (compiler configuration)
+    (2) input.txt (file with input polynomials, each line contains two polynomials separated by a white space)
+    (3) gcc_version.png (compiler configuration)
 
 ## Instructions to run the program
     (1) Get inside the directory poly_process
     (2) Execute the command: g++ -o poly_output tl_updated.cpp
-    (3) Run using command: ./poly_output <polynomial 1> <polynomial 2>
-    (4) Test run: ./poly_output "(5x+4)*3x" "15x^2+12x"
+    (3) Run using command: ./poly_output
+    (4) The command above would create a file output.txt with line-wise results.
