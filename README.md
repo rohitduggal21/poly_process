@@ -14,3 +14,7 @@
     (2) Execute the command: g++ -o poly_output tl_updated.cpp
     (3) Run using command: ./poly_output
     (4) The command above would create a file output.txt with line-wise results.
+    (5) Sample output for the given input.txt:
+        True
+        False
+        True
