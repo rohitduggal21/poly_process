@@ -2,6 +2,7 @@
 #include <string.h>
 #include <regex>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -243,16 +244,25 @@ string comparePolynomial(vector<polynomial> one, vector<polynomial> two)
 
 int main(int argc, char** argv)
 {
-	if (argc < 3)
+	string filetext;
+	ifstream inputFile("input.txt");
+	ofstream outputFile("output.txt");
+	while (getline (inputFile, filetext))
 	{
-		cout<<"Incorrect arguments passed, correct way <polynomial 1> <polynomial 2>"<<"\n";
+		vector<string> input;
+		char* poly = new char[filetext.length()+1];
+		strcpy(poly, filetext.c_str());
+		char *token = strtok(poly," ");
+		while (token != NULL) 
+    		{ 
+        		input.push_back(string(token));
+        		token = strtok(NULL, " "); 
+    		} 
+		string poly1 = input[0];
+		string poly2 = input[1];
+		outputFile<<comparePolynomial(process(poly1),process(poly2))<<"\n";
 	}
-	else
-	{
-		// Getting the polynomials
-		string poly1 = argv[1];
-		string poly2 = argv[2];
-		cout<<comparePolynomial(process(poly1),process(poly2))<<"\n";
-	}
+	inputFile.close();
+	outputFile.close();
 	return 0;
 }
