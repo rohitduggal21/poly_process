@@ -247,6 +247,7 @@ int main(int argc, char** argv)
 	string filetext;
 	ifstream inputFile("input.txt");
 	ofstream outputFile("output.txt");
+	outputFile<<"rohitduggal rohitduggal21@gmail.com"<<"\n";
 	while (getline (inputFile, filetext))
 	{
 		vector<string> input;
